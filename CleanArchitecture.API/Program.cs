@@ -1,5 +1,6 @@
 using CleanArchitecture.Application;
 using CleanArchitecture.Infrastructure;
+using CleanArchitecture.API.Endpoints; 
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,5 +25,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+
+app.MapProductEndpoints();
 
 app.Run();

@@ -1,6 +1,7 @@
+using CleanArchitecture.Application.Common.Interfaces; // <--- 1. AGREGAR ESTO
 using CleanArchitecture.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration; // Esto es necesario para leer appsettings
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CleanArchitecture.Infrastructure;
@@ -13,6 +14,8 @@ public static class DependencyInjection
             options.UseSqlServer(
                 configuration.GetConnectionString("DefaultConnection"),
                 b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+
+        services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>()); // En lugar de crear dos conexiones a la base de datos, reutiliza la misma instancia que Entity Framework ya creó para esa petición HTTP
 
         return services;
     }

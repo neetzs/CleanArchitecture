@@ -1,9 +1,10 @@
 using CleanArchitecture.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using CleanArchitecture.Application.Common.Interfaces;
 
 namespace CleanArchitecture.Infrastructure.Persistence;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : DbContext, IApplicationDbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
