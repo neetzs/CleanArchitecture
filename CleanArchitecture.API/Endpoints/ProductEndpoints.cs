@@ -1,7 +1,7 @@
 using CleanArchitecture.Application.Products.Commands.CreateProduct;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http; // A veces necesario para Results
+using Microsoft.AspNetCore.Http;
 
 namespace CleanArchitecture.API.Endpoints;
 
@@ -13,11 +13,12 @@ public static class ProductEndpoints
 
         // POST api/products
         group.MapPost("/", async (ISender sender, [FromBody] CreateProductCommand command) =>
-        {
-            var id = await sender.Send(command);
-            return Results.Ok(id);
-        })
-        .WithName("CreateProduct")
-        .WithOpenApi();
+                {
+                    var id = await sender.Send(command);
+                    return Results.Ok(id);
+                })
+                .WithName("CreateProduct")
+                // .WithOpenApi() // Me da errores esta linea, asi que la comento 
+                .RequireAuthorization(); // ESTO es el Candado que protege el endpoint
     }
 }
