@@ -1,5 +1,9 @@
 # Clean Architecture (.NET 10)
 
+![.NET](https://img.shields.io/badge/.NET-10.0%20LTS-purple?style=flat-square&logo=dotnet)
+![C#](https://img.shields.io/badge/C%23-14-blue?style=flat-square&logo=csharp)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+
 > Una plantilla robusta, modular y escalable implementando Clean Architecture, CQRS y seguridad moderna en .NET.
 
 Este repositorio sirve como una implementación de referencia para construir APIs RESTful empresariales utilizando las últimas tecnologías del ecosistema .NET. Está diseñado siguiendo estrictamente la **Regla de Dependencia**, asegurando que la lógica de negocio permanezca desacoplada de frameworks externos y bases de datos.
